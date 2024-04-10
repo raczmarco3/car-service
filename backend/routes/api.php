@@ -1,6 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CarsController;
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
+
+Route::post('/check-database', [GeneralController::class, 'checkDatabase']);
+Route::get('/clients', [ClientsController::class, 'getClients']);
+Route::get('/client/{clientId}/cars', [CarsController::class, 'getClientCars']);
+Route::get('/services', [ServicesController::class, 'getServiceLogs']);
+Route::get('/client', [ClientsController::class, 'findClient']);
