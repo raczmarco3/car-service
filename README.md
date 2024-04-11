@@ -16,7 +16,7 @@ Laravel: 10.48.7
    DB_USERNAME=user<br>
    DB_PASSWORD=password<br>
 7. #./vendor/bin/sail up
-8. In the webserver's docker container run:<br> #php artisan app:check-database
+8. In the webserver's docker container run:<br> #php artisan app:check-database <br> (or you can straight up open frontend/index.html, it will also do the migration and data upload)
 9. Wait for the migration to complete and for the database tables to be populated with data
 10. Open frontend/index.html
 
