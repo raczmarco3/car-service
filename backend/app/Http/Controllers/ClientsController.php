@@ -29,6 +29,14 @@ class ClientsController extends Controller
 
         $this->validateRequestParameters($request->all(), $constraints);
 
-        return new JsonResponse();
+        $type = "name";
+        $filter = $request->input('name');
+
+        if($request->input('card_number') !== null) {
+            $type = 'card_number';
+            $filter = $request->input('card_number');
+        }
+
+        return $this->clientService->findClient($filter, $type);
     }
 }
