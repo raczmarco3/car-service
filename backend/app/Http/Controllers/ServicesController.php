@@ -22,7 +22,7 @@ class ServicesController extends Controller
             'car_id' => 'required|exists:cars,id'
         ];
 
-        $this->validateRequestParameters($request->all(), $constraints);
+        $this->validateRequestParameters($request->query(), $constraints);
 
         return $this->servicesService->getServiceLogs($request->input('car_id'), $request->input('client_id'));
     }

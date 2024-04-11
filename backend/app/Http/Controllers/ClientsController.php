@@ -27,14 +27,16 @@ class ClientsController extends Controller
             "card_number" => 'prohibits:name|regex:/^[a-zA-Z0-9]*$/|exists:clients,card_number'
         ];
 
-        $this->validateRequestParameters($request->all(), $constraints);
+        $this->validateRequestParameters($request->query(), $constraints);
 
-        $type = "name";
-        $filter = $request->input('name');
-
-        if($request->input('card_number') !== null) {
+        if ($request->input('card_number') !== null) {
             $type = 'card_number';
             $filter = $request->input('card_number');
+        } else if ($request->input('name') !== null) {
+            $type = "name";
+            $filter = $request->input('name');
+        } else {
+            return new JsonResponse(["error" => "Either name or card_number is required!"], 400);
         }
 
         return $this->clientService->findClient($filter, $type);

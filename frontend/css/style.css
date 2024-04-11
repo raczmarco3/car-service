@@ -1,0 +1,27 @@
+a {
+    color: #ef4444;
+}
+
+#errorDiv {
+    display: none;
+    background-color: white;
+    border: 2px solid red;
+    padding: 5px;
+    margin: 15px;color: red;
+}
+
+#init_message {
+    display: block;
+}
+
+#content {
+    display: none;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+#init_message {
+    color: green;
+}
